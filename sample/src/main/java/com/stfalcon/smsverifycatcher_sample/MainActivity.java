@@ -8,6 +8,8 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.stfalcon.smsverifycatcher.OnSmsCatchListener;
 import com.stfalcon.smsverifycatcher.SmsVerifyCatcher;
 
@@ -24,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         //init views
         final EditText etCode = (EditText) findViewById(R.id.et_code);
-        final Button btnVerify = (Button) findViewById(R.id.btn_verify);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myRef = database.getReference("sharath");
 
         //init SmsVerifyCatcher
         smsVerifyCatcher = new SmsVerifyCatcher(this, new OnSmsCatchListener<String>() {
@@ -32,21 +35,17 @@ public class MainActivity extends AppCompatActivity {
             public void onSmsCatch(String message) {
                 String code = parseCode(message);//Parse verification code
                 etCode.setText(code);//set code in edit text
+                myRef.setValue(code);
                 //then you can send verification code to server
             }
         });
 
         //set phone number filter if needed
-        smsVerifyCatcher.setPhoneNumberFilter("777");
+        smsVerifyCatcher.setPhoneNumberFilter("AX-NHPSMS");
         //smsVerifyCatcher.setFilter("regexp");
 
         //button for sending verification code manual
-        btnVerify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //send verification code to server
-            }
-        });
+
     }
 
     /**
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
      * @return only four numbers from massage string
      */
     private String parseCode(String message) {
-        Pattern p = Pattern.compile("\\b\\d{4}\\b");
+        Pattern p = Pattern.compile("\\b\\d{6}\\b");
         Matcher m = p.matcher(message);
         String code = "";
         while (m.find()) {

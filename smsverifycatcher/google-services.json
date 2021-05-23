@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "578811557330",
+    "firebase_url": "https://smsverifycatcher-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "smsverifycatcher",
+    "storage_bucket": "smsverifycatcher.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578811557330:android:45089454861c47379cc40b",
+        "android_client_info": {
+          "package_name": "com.stfalcon.smsverifycatcher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "578811557330-6u5brduclnkbhsp4f9hvmtfd507t4hpj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeK3E6Zyejl90wMb8RA-pf1a0Ritkzq4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "578811557330-6u5brduclnkbhsp4f9hvmtfd507t4hpj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
